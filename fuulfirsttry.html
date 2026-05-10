@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>М'ясо і Вогонь | Стейкхаус</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+        /* Загальні стилі */
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Навігація */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        .logo { font-size: 24px; color: #FF7900; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a:hover { color: #FF7900; }
+        .btn-outline {
+            border: 1px solid #FF7900;
+            color: #FF7900;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-outline:hover { background: #FF7900; color: #000; }
+
+        /* Головний екран */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: 64px; margin-bottom: 20px; }
+        .hero p { max-width: 600px; font-size: 18px; line-height: 1.6; margin-bottom: 40px; }
+        .btn-primary {
+            background-color: #FF7900;
+            color: #000;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover { background-color: #e66a00; }
+
+        /* Про нас */
+        .about {
+            padding: 100px 50px;
+            text-align: center;
+            background: linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.9)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+        }
+        .about h2 { font-size: 42px; color: #FF7900; margin-bottom: 50px; }
+        .features { display: flex; justify-content: center; gap: 50px; max-width: 1200px; margin: 0 auto; }
+        .feature-box { flex: 1; padding: 20px; background: rgba(0,0,0,0.6); border-radius: 8px; }
+        .feature-box h3 { font-size: 24px; border-bottom: 1px solid #FF7900; padding-bottom: 10px; }
+
+        /* Меню */
+        .menu-section { padding: 100px 50px; text-align: center; background-color: #1a1a1a; }
+        .menu-section h2 { font-size: 42px; margin-bottom: 50px; }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .menu-card { background: #222; padding-bottom: 20px; border-radius: 8px; overflow: hidden; }
+        .menu-card img { width: 100%; height: 250px; object-fit: cover; }
+        .menu-card h3 { margin: 15px 0 5px; }
+        .menu-card .price { color: #FF7900; font-weight: 600; font-size: 20px; }
+
+        /* Лояльність */
+        .loyalty-section {
+            padding: 100px 50px;
+            text-align: center;
+            background-color: #0f0f0f;
+            border-top: 1px dashed #333;
+        }
+        .loyalty-section h2 { font-size: 42px; color: #FF7900; margin-bottom: 30px; }
+        .loyalty-text {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Форма бронювання */
+        .booking { padding: 100px 50px; display: flex; justify-content: center; background-color: #1a1a1a;}
+        .form-container { width: 800px; background: #222; padding: 50px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .form-container h2 { text-align: center; font-size: 36px; margin-bottom: 40px; color: #FF7900; }
+        .input-row { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        input, textarea {
+            background-color: #111;
+            border: 1px solid #444;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .half-width { width: 48%; }
+        textarea { height: 120px; resize: vertical; }
+        input:focus, textarea:focus { outline: none; border-color: #FF7900; }
+
+        /* Відгуки */
+        .reviews { padding: 100px 50px; text-align: center; background-color: #111; }
+        .review-text { font-size: 24px; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        .author { margin-top: 20px; color: #FF7900; font-weight: 600; }
+
+        footer { text-align: center; padding: 20px; background-color: #000; font-size: 14px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">М'ясо і Вогонь</div>
+        <nav class="nav-links">
+            <a href="#home">Головна</a>
+            <a href="#about">Про нас</a>
+            <a href="menu.html">Меню</a>
+            <a href="#loyalty">Лояльність</a>
+        </nav>
+        <a href="registration.html" class="btn-outline">Реєстрація</a>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>М'ясо і Вогонь</h1>
+        <p>Ресторан найсмачнішого м'яса у Львові за старовинними рецептами. Тільки свіжі продукти, відкритий вогонь та справжня українська гостинність.</p>
+        <a href="#booking"><button class="btn-primary">Зарезервувати стіл</button></a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Справжній смак вогню на вашій тарілці!</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3>Вища якість</h3>
+                <p>Тільки свіжі фермерські продукти від перевірених постачальників.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Найкращі кухарі</h3>
+                <p>Кухарі, які мають фахову освіту та регулярно підвищують кваліфікацію.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Відбірне м'ясо</h3>
+                <p>Стейки преміум-класу без заморозки для ідеального смаку.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <h2>Найпопулярніші страви нашого ресторану</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="images/Телячий бріскет.jpeg" alt="Телячий бріскет">
+                <h3>Телячий бріскет</h3>
+                <div class="price">420 ₴</div>
+            </div>
+            <div class="menu-card">
+                <img src="images/Каре ягняти.jpg" alt="Каре ягняти">
+                <h3>Каре ягняти</h3>
+                <div class="price">580 ₴</div>
+            </div>
+            <div class="menu-card">
+                <img src="images/Свинячі ребра BBQ.jpg" alt="Свинячі ребра">
+                <h3>Свинячі ребра BBQ</h3>
+                <div class="price">390 ₴</div>
+            </div>
+            <div class="menu-card">
+                <img src="images/Стейк із часниковим маслом.jpeg" alt="Стейк">
+                <h3>Стейк із часниковим маслом</h3>
+                <div class="price">450 ₴</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="loyalty" class="loyalty-section">
+        <h2>Клуб «М'ясо і Вогонь»</h2>
+        <p class="loyalty-text">
+            Ми цінуємо наших постійних гостей. Долучайтеся до програми лояльності, щоб отримувати 5% кешбеку з кожного замовлення, пріоритетне бронювання столиків та приємні подарунки від шеф-кухаря до вашого Дня народження. 
+        </p>
+        <div class="features">
+            <div class="feature-box">
+                <h3>5% Кешбек</h3>
+                <p>Накопичуйте бали з кожного чеку.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Подарунки</h3>
+                <p>Безкоштовний стейк у День народження.</p>
+            </div>
+            <div class="feature-box">
+                <h3>VIP Бронювання</h3>
+                <p>Доступ до найкращих столів у вихідні.</p>
+            </div>
+        </div>
+        <br><br>
+        <a href="registration.html"><button class="btn-primary">Зареєструватися</button></a>
+    </section>
+
+    <section id="booking" class="booking">
+        <div class="form-container">
+            <h2>Бронювання столика</h2>
+            <div class="input-row">
+                <input type="text" class="half-width" placeholder="Ім'я">
+                <input type="text" class="half-width" placeholder="Прізвище">
+            </div>
+            <div class="input-row">
+                <input type="email" placeholder="Електронна пошта">
+            </div>
+            <div class="input-row">
+                <textarea placeholder="Напишіть Ваш коментар.."></textarea>
+            </div>
+            <div class="input-row">
+                <input type="tel" class="half-width" placeholder="Телефон">
+                <input type="date" class="half-width" placeholder="Бажана дата">
+            </div>
+            <button class="btn-primary" style="width: 100%; margin-top: 10px;">Забронювати</button>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="review-text">
+            "Це, без сумніву, найкраще м'ясо у Львові! Атмосфера просто неймовірна, стейки тануть у роті, а подача страв - це окремий вид мистецтва. Обов'язково повернуся сюди з друзями."
+        </div>
+        <div class="author">- Андрій Мельник</div>
+    </section>
+
+    <footer>
+        © 2026 Ресторан «М'ясо і Вогонь». Усі права захищено.
+    </footer>
+
+</body>
+</html>

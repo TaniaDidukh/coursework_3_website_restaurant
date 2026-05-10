@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню | М'ясо і Вогонь</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        .logo { font-size: 24px; color: #FF7900; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a:hover { color: #FF7900; }
+
+        .menu-page {
+            padding: 150px 20px 100px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .menu-page h1 {
+            font-size: 48px;
+            color: #FF7900;
+            margin-bottom: 10px;
+        }
+        .menu-subtitle {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .menu-list {
+            text-align: left;
+            margin-top: 40px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 10px;
+        }
+        .item-info {
+            flex-grow: 1;
+        }
+        .item-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            display: block;
+        }
+        .item-weight {
+            font-size: 14px;
+            color: #FF7900;
+            margin-top: 5px;
+        }
+        .item-price {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 12px 30px;
+            border: 1px solid #FF7900;
+            color: #FF7900;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #FF7900;
+            color: #000;
+        }
+
+        footer { text-align: center; padding: 40px; background-color: #000; font-size: 14px; color: #666; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">М'ясо і Вогонь</div>
+        <nav class="nav-links">
+            <a href="fuulfirsttry.html">Головна</a>
+            <a href="fuulfirsttry.html#about">Про нас</a>
+            <a href="menu.html" style="color: #FF7900;">Меню</a>
+        </nav>
+    </header>
+
+    <main class="menu-page">
+        <h1>Наше Меню</h1>
+        <div class="menu-subtitle">Стейки та м'ясні шедеври на відкритому вогні</div>
+
+        <div class="menu-list">
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Стейк Рібай (Prime)</span>
+                    <span class="item-weight">350 / 50 г</span>
+                </div>
+                <div class="item-price">650 ₴</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Стейк Томагавк на кістці</span>
+                    <span class="item-weight">100 г (ціна за сиру вагу)</span>
+                </div>
+                <div class="item-price">185 ₴</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Каре ягняти з пряними травами</span>
+                    <span class="item-weight">300 / 100 г</span>
+                </div>
+                <div class="item-price">590 ₴</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Копчені свинячі ребра BBQ</span>
+                    <span class="item-weight">450 / 150 г</span>
+                </div>
+                <div class="item-price">430 ₴</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Філе Міньйон (Тендерлойн)</span>
+                    <span class="item-weight">250 / 50 г</span>
+                </div>
+                <div class="item-price">560 ₴</div>
+            </div>
+        </div>
+
+        <a href="fuulfirsttry.html" class="back-btn">Повернутися на головну</a>
+    </main>
+
+    <footer>
+        © 2026 Ресторан «М'ясо і Вогонь». Усі права захищено.
+    </footer>
+
+</body>
+</html>

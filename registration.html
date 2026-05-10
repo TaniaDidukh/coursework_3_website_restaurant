@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація | М'ясо і Вогонь</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1, h2, .logo { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        .logo { font-size: 24px; color: #FF7900; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a:hover { color: #FF7900; }
+
+        .reg-page {
+            padding: 150px 20px 100px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .reg-page h1 {
+            font-size: 42px;
+            color: #FF7900;
+            margin-bottom: 10px;
+        }
+        .reg-subtitle {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .form-container {
+            background: #222;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+        input {
+            background-color: #111;
+            border: 1px solid #444;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+        }
+        input:focus { outline: none; border-color: #FF7900; }
+        
+        .btn-primary {
+            background-color: #FF7900;
+            color: #000;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .btn-primary:hover { background-color: #e66a00; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            border: 1px solid #FF7900;
+            color: #FF7900;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #FF7900;
+            color: #000;
+        }
+
+        footer { text-align: center; padding: 40px; background-color: #000; font-size: 14px; color: #666; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">М'ясо і Вогонь</div>
+        <nav class="nav-links">
+            <a href="fuulfirsttry.html">Головна</a>
+            <a href="fuulfirsttry.html#about">Про нас</a>
+            <a href="menu.html">Меню</a>
+            <a href="fuulfirsttry.html#loyalty">Лояльність</a>
+        </nav>
+    </header>
+
+    <main class="reg-page">
+        <h1>Реєстрація гостя</h1>
+        <div class="reg-subtitle">Створіть профіль, щоб стати учасником програми лояльності</div>
+
+        <div class="form-container">
+            <input type="text" id="clientName" placeholder="Ваше Ім'я та Прізвище">
+            <input type="tel" id="clientPhone" placeholder="Номер телефону">
+            <input type="email" id="clientEmail" placeholder="Електронна пошта">
+            <label style="font-size: 14px; color: #888; margin-bottom: 5px; display: block;">Дата народження (для подарунка):</label>
+            <input type="date" id="clientDate">
+            <button class="btn-primary" onclick="saveClientData()">Створити профіль</button>
+        </div>
+
+        <a href="fuulfirsttry.html" class="back-btn">Повернутися на головну</a>
+    </main>
+
+    <footer>
+        © 2026 Ресторан «М'ясо і Вогонь». Усі права захищено.
+    </footer>
+
+    <script>
+        function saveClientData() {
+            // Отримуємо значення з полів
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const email = document.getElementById('clientEmail').value;
+            const date = document.getElementById('clientDate').value;
+
+            // Перевіряємо, чи заповнені основні поля
+            if(name === '' || phone === '') {
+                alert("Будь ласка, введіть ім'я та номер телефону.");
+                return;
+            }
+
+            // Формуємо об'єкт з даними клієнта
+            const newClient = {
+                fullName: name,
+                phoneNumber: phone,
+                emailAddress: email,
+                birthDate: date,
+                registrationTime: new Date().toLocaleString()
+            };
+
+            // Отримуємо існуючу базу клієнтів (або створюємо нову, якщо її ще немає)
+            let clientsDB = JSON.parse(localStorage.getItem('restaurantClients')) || [];
+            
+            // Додаємо нового клієнта в базу
+            clientsDB.push(newClient);
+
+            // Зберігаємо оновлену базу назад у пам'ять браузера
+            localStorage.setItem('restaurantClients', JSON.stringify(clientsDB));
+
+            // Виводимо повідомлення про успіх
+            alert("Профіль успішно створено! Ваші дані збережено в системі.");
+
+            // Очищаємо поля форми після реєстрації
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('clientDate').value = '';
+        }
+    </script>
+</body>
+</html>
