@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація | М'ясо і Вогонь</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+        body { margin: 0; padding: 0; background-color: #111; color: #fff; font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+        header { position: fixed; top: 0; width: 100%; background-color: rgba(17, 17, 17, 0.95); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; z-index: 1000; border-bottom: 1px solid #333; }
+        .logo { font-size: 24px; color: #FF7900; }
+        .reg-page { padding: 150px 20px 100px; max-width: 600px; margin: 0 auto; text-align: center; }
+        .form-container { background: #222; padding: 40px; border-radius: 8px; border: 1px solid #333; text-align: left; }
+        h3 { color: #FF7900; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 5px; }
+        input { background-color: #111; border: 1px solid #444; color: white; padding: 15px; font-size: 16px; width: 100%; box-sizing: border-box; margin-bottom: 15px; color-scheme: dark; }
+        input:focus { outline: none; border-color: #FF7900; }
+        .btn-primary { background-color: #FF7900; color: #000; padding: 15px; font-size: 18px; font-weight: 600; border: none; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-primary:hover { background-color: #e66a00; }
+    </style>
+</head>
+<body>
+    <header><div class="logo">М'ясо і Вогонь</div></header>
+    <main class="reg-page">
+        <h1>Створення профілю</h1>
+        <div class="form-container">
+            <form action="register.php" method="POST">
+                <h3>Особисті дані</h3>
+                <input type="text" name="first_name" placeholder="Ім'я" required>
+                <input type="text" name="last_name" placeholder="Прізвище" required>
+                <input type="tel" name="phone" placeholder="Номер телефону" required>
+                <input type="email" name="email" placeholder="Електронна пошта" required>
+                <input type="password" name="password" placeholder="Придумайте пароль" required>
+
+                <h3>Адреса доставки</h3>
+                <input type="text" name="city" placeholder="Місто" required>
+                <input type="text" name="street" placeholder="Вулиця" required>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" name="house_number" placeholder="Буд." required>
+                    <input type="text" name="apartment_number" placeholder="Кв.">
+                </div>
+                <button type="submit" class="btn-primary">Зареєструватися</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
